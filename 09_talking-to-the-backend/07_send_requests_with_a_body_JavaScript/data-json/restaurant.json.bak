@@ -1,0 +1,70 @@
+{
+  "menu": [
+    {
+      "name": "Spaghetti Bolognese",
+      "price": 15.99,
+      "description": "A classic Italian dish made with ground beef, tomatoes, and spices, served over spaghetti noodles.",
+      "id": 1
+    },
+    {
+      "name": "Grilled Salmon",
+      "price": 22.99,
+      "description": "Wild-caught salmon fillet grilled to perfection and served with a lemon butter sauce.",
+      "id": 2
+    },
+    {
+      "name": "BLT Sandwich",
+      "price": 12.99,
+      "description": "A classic sandwich made with bacon, lettuce, and tomato on toasted bread.",
+      "id": 3
+    },
+    {
+      "name": "Chicken Parmesan",
+      "price": 17.99,
+      "description": "Breaded chicken topped with marinara sauce and mozzarella cheese, baked to perfection and served with a side of spaghetti.",
+      "id": 4
+    },
+    {
+      "name": "Strawberry Salad",
+      "price": 11.99,
+      "description": "Mixed greens topped with fresh strawberries, candied pecans, and feta cheese, with a strawberry vinaigrette dressing.",
+      "id": 5
+    },
+    {
+      "name": "Hamburger",
+      "price": 12.99,
+      "description": "A juicy, grilled hamburger patty served on a toasted bun with lettuce, tomato, and your choice of toppings.",
+      "id": 6
+    },
+    {
+      "name": "Fried Chicken Sandwich",
+      "price": 13.99,
+      "description": "Crispy fried chicken served on a toasted bun with lettuce, tomato, and your choice of toppings.",
+      "id": 7
+    },
+    {
+      "name": "Grilled Cheese Sandwich",
+      "price": 8.99,
+      "description": "Melted cheese on toasted bread, served with a side of tomato soup for dipping.",
+      "id": 8
+    },
+    {
+      "name": "Pepperoni Pizza",
+      "price": 14.99,
+      "description": "Classic pepperoni pizza with mozzarella cheese and tomato sauce on a crispy crust.",
+      "id": 9
+    },
+    {
+      "name": "Margherita Pizza",
+      "price": 16.99,
+      "description": "Tomato, mozzarella, and basil on a thin crust, drizzled with olive oil.",
+      "id": 10
+    },
+    {
+      "name": "BBQ Ribs",
+      "price": 22.99,
+      "description": "Slow-cooked ribs smothered in BBQ sauce, served with a side of coleslaw and baked beans.",
+      "id": 11
+    }
+  ]
+ }
