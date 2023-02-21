@@ -1,0 +1,13 @@
+{
+  "name": "js_modules_split_project",
+  "version": "1.0.0",
+  "description": "exercise to learn how to split up a JS project",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --quiet"
+  },
+  "author": "Tamas Lajtos",
+  "license": "ISC"
+}
