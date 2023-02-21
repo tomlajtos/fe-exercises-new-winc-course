@@ -39,12 +39,25 @@ const showReservations = async root_url => {
     console.table(reservations);
 };
 
+const addReservation = async function(root_url, body) {
+    console.log(`Making a new reservation for ${body.name} date:${body.date} time:${body.time}`);
+
+    let newRes = await sendRequest("POST", root_url, "reservations", body);
+
+    console.table(newRes)
+    Object.keys(newRes).length ? console.log("res successful:", true) : console.log("res successful:", false);
+    return newRes;
+}
 ///////////////////////////////////////////////////////////////////////////////
 // Show all reservations
 await showReservations(ROOT_URL);
 
 ///////////////////////////////////////////////////////////////////////////////
 // Create a new reservation.
+const huanRes = { "name": "Sam Huan", "people": 6, "date": "12/12/2024", "time": "20:00" };
+let huanResResult = await addReservation(ROOT_URL, huanRes);
+console.log("Huan reservation ID:", huanResResult.id);
+await showReservations(ROOT_URL);
 
 //////////////////////////////////////////////////////////////////////////////
 // Create another new reservation.
