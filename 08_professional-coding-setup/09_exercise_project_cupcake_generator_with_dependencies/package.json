@@ -1,0 +1,16 @@
+{
+    "name": "cupcake-generator_practice_project",
+    "version": "1.0.0",
+    "description": "practice using dependencies (prompt) and using modules",
+    "main": "index.js",
+    "type": "commonjs",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "keywords": [],
+    "author": "winc,tomlajtos",
+    "license": "ISC",
+    "dependencies": {
+        "prompt-sync": "^4.2.0"
+    }
+}
