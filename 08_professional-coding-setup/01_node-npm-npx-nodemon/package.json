@@ -1,0 +1,11 @@
+{
+  "name": "bakery",
+  "version": "1.0.0",
+  "description": "winc front-end development, exercise javascript project",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --quiet"
+  },
+  "author": "Tamas Lajtos",
+  "license": "ISC"
+}
