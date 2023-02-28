@@ -1,11 +1,13 @@
 // Basics Exercise: simple fetching.
 const BASE_URL = "http://localhost:3000";
 // Create an async function fetchUsers.
-const fetchUsers = async(base_url) => {
+const fetchUsers = async (base_url) => {
     const url = base_url + "/users"
     const response = await fetch(url);
     const users = await response.json();
-    console.table(users);
+    // console.table(users);
+
+    return users;
 }
 
 // Call the fetchUsers function.
@@ -15,7 +17,7 @@ const fetchUsers = async(base_url) => {
 // Select the button that is on the page.
 const fetchButton = document.querySelector(".fetch-button");
 // Add fetchUsers as the event listener to the button.
-fetchButton.addEventListener("click", () => fetchUsers(BASE_URL));
+// fetchButton.addEventListener("click", () => fetchUsers(BASE_URL));
 // End of Basics Exercise.
 
 // =================================================================
@@ -23,28 +25,51 @@ fetchButton.addEventListener("click", () => fetchUsers(BASE_URL));
 // Intermediate Exercise: fetching multiple related resources.
 
 // Write the fetchPostAndComments async function.
-
 // First store the users in a constant. You can reuse the fetchUsers function for this
 // or write a generic helper function that fetches something and converts it to JSON.
-
 // Fetch the post.
-
 // Fetch the comments.
-
 // Find the author of the post.
-
 // Log the author's name and the content of the post.
-
 // Loop over the comments
-
 // For each comment find the author, and log their name, and the comment.
-
 // Select the button that is on the page.
-
 // Fetch a specific Post and its comments on clicking the button.
+const fetchPostAndComments = async (postId) => {
+    const postUrl = `${BASE_URL}/posts/${postId}`;
+    const commentsUrl = `${BASE_URL}/comments?postId=${postId}`
 
+    // fetch users object
+    const users = await fetchUsers(BASE_URL);
+    // console.table(users);
+
+    // fetch post of specified id
+    const postResponse = await fetch(postUrl);
+    const post = await postResponse.json();
+
+    //fetch comments for specific post
+    const commentsResponse = await fetch(commentsUrl);
+    const comments = await commentsResponse.json();
+
+    const getUser = function(userAction) {
+        const [user] = users.filter(usr => usr.id === userAction.userId);
+        return user;
+    }
+
+    //log post info and comments
+    console.group(`Post (id:${postId})`);
+    console.log("user:", getUser(post).name);
+    console.log("text:", post.body);
+    console.log("Comments:");
+    comments.forEach(comment => {
+        console.log(`> ${getUser(comment).name}: ${comment.comment}`);
+    });
+    console.groupEnd();
+}
+
+// fetchPostAndComments("f4c8a31e");
+fetchButton.addEventListener("click", () => fetchPostAndComments("892a4ba3"));
 // End of Intermediate Exercise.
-
 // =================================================================
 
 // Advanced Exercise: fire off multiple requests.
