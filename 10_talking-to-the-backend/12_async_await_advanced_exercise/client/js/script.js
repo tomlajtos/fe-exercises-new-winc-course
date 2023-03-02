@@ -25,11 +25,9 @@ const fetchButton = document.querySelector(".fetch-button");
 // Add fetchUsers as the event listener to the button.
 // fetchButton.addEventListener("click", () => fetchUsers(BASE_URL));
 // End of Basics Exercise.
-
 // =================================================================
 
 // Intermediate Exercise: fetching multiple related resources.
-
 // Write the fetchPostAndComments async function.
 // First store the users in a constant. You can reuse the fetchUsers function for this
 // or write a generic helper function that fetches something and converts it to JSON.
@@ -41,6 +39,29 @@ const fetchButton = document.querySelector(".fetch-button");
 // For each comment find the author, and log their name, and the comment.
 // Select the button that is on the page.
 // Fetch a specific Post and its comments on clicking the button.
+// End of Intermediate Exercise.
+// =================================================================
+
+// Advanced Exercise: fire off multiple requests.
+// Rewrite the fetchPostAndComments async function.
+// First, we should not await any of the fetches.
+// Await users and post.
+// Log out the post's author and the body.
+// Await the comments.
+// For each comment find the author, and log their name, and the comment.
+// Select the button that is on the page.
+// Fetch a specific Post and its comments on clicking the button.
+// End of Advanced Exercise.
+// Advanced Exercise: fire off multiple requests.
+// Rewrite the fetchPostAndComments async function.
+// First, we should not await any of the fetches.
+// Await users and post.
+// Log out the post's author and the body.
+// Await the comments.
+// For each comment find the author, and log their name, and the comment.
+// Select the button that is on the page.
+// Fetch a specific Post and its comments on clicking the button.
+
 const fetchPostAndComments = async (postId) => {
     const postUrl = `${BASE_URL}/posts/${postId}`;
     const commentsUrl = `${BASE_URL}/comments?postId=${postId}`
@@ -74,25 +95,5 @@ const fetchPostAndComments = async (postId) => {
 
 // fetchPostAndComments("f4c8a31e");
 fetchButton.addEventListener("click", () => fetchPostAndComments("892a4ba3"));
-// End of Intermediate Exercise.
-// =================================================================
-
-// Advanced Exercise: fire off multiple requests.
-
-// Rewrite the fetchPostAndComments async function.
-
-// First, we should not await any of the fetches.
-
-// Await users and post.
-
-// Log out the post's author and the body.
-
-// Await the comments.
-
-// For each comment find the author, and log their name, and the comment.
-
-// Select the button that is on the page.
-
-// Fetch a specific Post and its comments on clicking the button.
 
 // End of Advanced Exercise.
