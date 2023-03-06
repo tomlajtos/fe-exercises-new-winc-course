@@ -16,8 +16,11 @@ const orderDescriptionMinimumLength = 8;
 const getItem = io.getItem;
 const getItems = io.getItems;
 
+//Flavour validation
+//validation helper - flavour
 const getFlavours = async() => await io.getItems("flavours");
 
+//validation helper - flavour
 const getFlavourNames = async(filterById = -1) => {
     let flavours = await getFlavours();
     if (filterById > 0) {
@@ -26,18 +29,20 @@ const getFlavourNames = async(filterById = -1) => {
     return flavours.map(flavour => flavour.name);
 };
 
-const getOrderStatusList = () => ["unpaid", "paid", "transit", "delivered"];
-
+//validation helper - flavour
 const isANumber = value => {
     const converted = parseInt(value);
     return !Number.isNaN(converted);
 };
 
+//validation helper - flavour
 const numberIsInRange = (number, lower, upper) =>
     number >= lower && number <= upper;
 
+//validation helper - flavour | order
 const stringHasMinimumLength = (str, length) => str.length >= length;
 
+//validaton helper - flavour | order
 const stringConsistsOfLettersOnly = str => {
     // Regular expression, not necessary to know this.
     const re = /^[a-zA-Z\s]*$/;
@@ -89,15 +94,20 @@ const validateFlavour = async(operation, { name, price, id }) => {
     return errors;
 };
 
+//CUSTOMER VALIDATION
+//validation helper - customer
 const getCustomers = async() => await io.getItems("customers");
 
+//validation helper - customer | order
 const getCustomerIds = async() => {
     const customers = await getCustomers();
     return customers.map(customer => customer.id);
 };
 
+//validation helper - customer | delete customer
 const getCustomer = async id => await io.getItem("customers", id);
 
+//validation helper - customer
 const getCustomerEmails = async(filterById = -1) => {
     let customers = await getCustomers();
     if (filterById > 0) {
@@ -106,14 +116,21 @@ const getCustomerEmails = async(filterById = -1) => {
     return customers.map(customer => customer.email);
 };
 
+//TODO, await getCustomer, getCustomerEmails, getCustomerIds
+const validateCustomer = async(operation, { email, name, id }) => {};
+
+// ORDER VALIDATION
+//validation helper - order
+const getOrderStatusList = () => ["unpaid", "paid", "transit", "delivered"];
+
+// validation helper - delete customer
 const getOrders = async() => await io.getItems("orders");
 
+// validation helper - delete customer
 const getOrder = async id => {
     const orders = await getOrders();
     return orders.find(order => order.id === id);
 };
-
-const validateCustomer = async(operation, { email, name, id }) => {};
 
 const validateOrder = async(
     _operation, { customerId, date, status, orderDescription }
@@ -145,6 +162,7 @@ const validateOrder = async(
     return errors;
 };
 
+// VALIDATION BEFORE UPDATING A DB ITEM
 const validateAddUpdate = async(operation, itemType, data) => {
     let errors;
     switch (itemType) {
@@ -164,6 +182,7 @@ const validateAddUpdate = async(operation, itemType, data) => {
     return [errors.length > 0, errors];
 };
 
+// VALIDATION BEFORE CUSTOMER DELETION
 const validateDeleteCustomer = async id => {
     let errors = [];
     //  Customers may only be deleted if there are no orders for them.
@@ -180,6 +199,7 @@ const validateDeleteCustomer = async id => {
     return errors;
 };
 
+// VALIDATION BEFORE ORDER DELETION
 const validateDeleteOrder = async id => {
     let errors = [];
     //  Orders may only be deleted if they have status "delivered".
@@ -194,6 +214,7 @@ const validateDeleteOrder = async id => {
     return errors;
 };
 
+// VALIDATION BEFORE DELETING A DB ITEM
 const validateDelete = async(itemType, itemId) => {
     let errors = [];
     if (itemType === "customers") {
