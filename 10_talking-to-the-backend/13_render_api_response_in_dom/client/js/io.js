@@ -45,14 +45,24 @@ const getItems = async itemType => {
 const getItem = async (itemType, itemId) => {
 	const itemUrl = `${itemType}/${itemId}`; 
 	const item = await sendRequest("GET", itemUrl);
-	// const [item] = items.filter(item => item.id === itemId);
 	return item;
 };
 
-const addItem = (itemType, data) => { };
+const addItem = (itemType, data) => {
+	const result =  sendRequest("POST", itemType, data);
+	return result;
+};
 
-const updateItem = (itemType, itemId, data) => { };
+const updateItem = (itemType, itemId, data) => {
+	const itemUrl = `${itemType}/${itemId}`; 
+	const result = sendRequest("PUT", itemUrl, data);
+	return result;
+};
 
-const deleteItem = (itemType, itemId) => { };
+const deleteItem = (itemType, itemId) => {
+	const itemUrl = `${itemType}/${itemId}`; 
+	const result = sendRequest("DELETE", itemUrl);
+	return result;
+};
 
 export { addItem, getItem, getItems, updateItem, deleteItem };
