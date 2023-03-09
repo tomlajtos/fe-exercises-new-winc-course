@@ -38,10 +38,15 @@ const generateSendRequest =
 const sendRequest = generateSendRequest(ROOT_URL, API_KEY);
 
 const getItems = async itemType => {
-
+	const items = await sendRequest('GET', itemType);
+	return items;
 };
 
-const getItem = async (itemType, itemId) => { };
+const getItem = async (itemType, itemId) => {
+	const items = await getItems(itemType);
+	const [item] = items.filter(item => item.id === itemId);
+	return item;
+};
 
 const addItem = (itemType, data) => { };
 
@@ -50,4 +55,3 @@ const updateItem = (itemType, itemId, data) => { };
 const deleteItem = (itemType, itemId) => { };
 
 export { addItem, getItem, getItems, updateItem, deleteItem };
-
