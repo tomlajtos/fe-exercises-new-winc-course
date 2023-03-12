@@ -1,6 +1,7 @@
 **/gitignore/
 **/node_modules/
 **/node-modules/
+**/*.bak
 
 !**/package.json
 !**/package-lock.json
