@@ -60,9 +60,17 @@ const handleDelete = async (itemType, itemId) => {
 	renderList(itemType);
 };
 
-const handleClickEvent = async event => { };
-
-const handleMenuClickEvent = event => { };
+const handleClickEvent = async event => { }
+const handleMenuClickEvent = event => {
+	let menuItem = event.target.dataset.link;
+	console.log(menuItem);
+	switch (menuItem) {
+		case "home": renderHome();
+			break;
+		default: renderList(menuItem);
+			break;
+	}
+};
 
 const addEventListeners = () => {
 	// We use "event bubbling" here to listen to all events inside of the root
@@ -77,4 +85,3 @@ const addEventListeners = () => {
 };
 
 export { addEventListeners };
-
