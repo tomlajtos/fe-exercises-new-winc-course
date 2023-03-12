@@ -60,9 +60,28 @@ const handleDelete = async (itemType, itemId) => {
 	renderList(itemType);
 };
 
-const handleClickEvent = async event => { }
+const handleClickEvent = async event => {
+	const itemType = getItemType(event);
+	// console.log("handleClickEvent itemType:", itemType);
+
+	const buttonType = event.target.classList;
+	// console.log("handleClickEvent buttonType", buttonType);
+
+	const itemId = getItemId(event);
+	// console.log("handleClickEvent itemId", itemId);
+
+	switch (buttonType.value) {
+		case "add": renderForm(itemType);
+			break;
+		case "edit": handleEdit(itemType, itemId);
+			break;
+		case "delete": handleDelete(itemType, itemId);
+			break;
+	}
+};
+
 const handleMenuClickEvent = event => {
-	let menuItem = event.target.dataset.link;
+	const menuItem = event.target.dataset.link;
 	console.log(menuItem);
 	switch (menuItem) {
 		case "home": renderHome();
