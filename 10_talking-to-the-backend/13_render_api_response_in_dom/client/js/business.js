@@ -39,10 +39,10 @@ const isANumber = value => {
 const numberIsInRange = (number, lower, upper) =>
     number >= lower && number <= upper;
 
-//validation helper - flavour | order
+//validation helper - flavour | order | customer
 const stringHasMinimumLength = (str, length) => str.length >= length;
 
-//validaton helper - flavour | order
+//validaton helper - flavour | order | customer
 const stringConsistsOfLettersOnly = str => {
     // Regular expression, not necessary to know this.
     const re = /^[a-zA-Z\s]*$/;
@@ -117,7 +117,31 @@ const getCustomerEmails = async(filterById = -1) => {
 };
 
 //TODO, await getCustomer, getCustomerEmails, getCustomerIds
-const validateCustomer = async(operation, { email, name, id }) => {};
+const validateCustomer = async(operation, { email, name, id }) => {
+	const errors = [];
+	const customerEmails = await getCustomerEmails();
+	
+	//email field cannot be empty
+	if (!stringHasMinimumLength(email, 1)) {
+		errors.push("Please provide an email address.");
+	}
+	//must be an email that is not in use
+	else if ( operation === "add" && customerEmails.includes(email) || 
+			 operation === "update" && customerEmails.includes(email)) {
+		errors.push("There is a user registerd with the same email address, please provide a different one.");
+	}
+
+	// name must be more than 2 chars
+	if (!stringHasMinimumLength(name, 2)){
+		errors.push("Your name must be minimum 2 characters long");
+	}
+	// only spaces and letters allowed
+	else if (!stringConsistsOfLettersOnly(name)) {
+		errors.push("Onlly letters and spaces are accepted as characters.");
+	}
+	
+	return errors;
+};
 
 // ORDER VALIDATION
 //validation helper - order
