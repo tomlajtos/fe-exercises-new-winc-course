@@ -42,9 +42,14 @@ const getItems = async itemType => {
 	return items;
 };
 
+// const getItem = async (itemType, itemId) => {
+// 	const itemUrl = `${itemType}/${itemId}`; 
+// 	const item = await sendRequest("GET", itemUrl);
+// 	return item;
+// };
 const getItem = async (itemType, itemId) => {
-	const itemUrl = `${itemType}/${itemId}`; 
-	const item = await sendRequest("GET", itemUrl);
+	const items = await getItems(itemType);
+	const [item] = items.filter(item => item.id === itemId);
 	return item;
 };
 
