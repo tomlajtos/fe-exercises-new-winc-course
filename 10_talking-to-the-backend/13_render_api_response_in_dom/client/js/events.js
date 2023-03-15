@@ -62,13 +62,10 @@ const handleDelete = async (itemType, itemId) => {
 
 const handleClickEvent = async event => {
 	const itemType = getItemType(event);
-	// console.log("handleClickEvent itemType:", itemType);
 
 	const buttonType = event.target.classList;
-	// console.log("handleClickEvent buttonType", buttonType);
 
 	const itemId = getItemId(event);
-	// console.log("handleClickEvent itemId", itemId);
 
 	switch (buttonType.value) {
 		case "add": renderForm(itemType);
