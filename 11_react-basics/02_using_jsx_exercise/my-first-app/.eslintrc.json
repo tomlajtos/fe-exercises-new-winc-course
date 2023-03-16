@@ -17,6 +17,6 @@
         "react"
     ],
     "rules": {
-	"react/prop-tpes": 0
+	"react/prop-types": 0
     }
 }
