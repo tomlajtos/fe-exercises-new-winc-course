@@ -1,4 +1,4 @@
-import React from 'react'
+/* eslint-disable react/react-in-jsx-scope */
 import './DrinkButtons.css';
 
 export const DrinkButtons = () => {
