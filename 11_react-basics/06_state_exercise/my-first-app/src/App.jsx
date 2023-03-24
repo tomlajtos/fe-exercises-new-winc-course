@@ -1,5 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 // interactive drink coice will come in future exercise (R. state)
+import { useState } from 'react';
 import './App.css';
 import { DrinkButtons } from './components/DrinkButtons.jsx';
 import { DrinkChoice } from './components/DrinkChoice.jsx';
@@ -7,7 +8,7 @@ import { coffee, tea } from './utils/data.js';
 
 export const App = () => {
 	const greeting = "Welcome to our cafe!";
-	const userDrink = undefined;
+	const [userDrink, setUserDrink] = useState(tea);
 
 	return (
 		<div className="App">
@@ -19,4 +20,4 @@ export const App = () => {
 			)}
 		</div>
 	);
-}
+} 
