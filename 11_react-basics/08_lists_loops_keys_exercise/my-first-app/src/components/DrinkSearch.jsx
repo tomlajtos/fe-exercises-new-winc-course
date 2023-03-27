@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TextInput } from './TextInput.jsx';
+import { TextInput } from './ui/TextInput.jsx';
 
 export const DrinkSearch = () => {
 	const [searchField, setSearchField] = useState("americano");
