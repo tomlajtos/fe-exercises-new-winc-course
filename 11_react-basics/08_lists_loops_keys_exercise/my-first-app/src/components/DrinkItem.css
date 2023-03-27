@@ -1,0 +1,11 @@
+.drink-item {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.drink-item img {
+	height: 50px;
+	width: 50px;
+	margin: 10px 20px 10px 0;
+}
