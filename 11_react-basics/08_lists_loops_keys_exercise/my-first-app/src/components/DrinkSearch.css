@@ -1,0 +1,8 @@
+.drink-search {
+	display: flex;
+	flex-direction: column;
+}
+
+.drink-search label {
+	margin-bottom: 10px;
+}
