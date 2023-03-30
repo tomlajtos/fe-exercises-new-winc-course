@@ -1,11 +1,14 @@
 .button {
+	box-sizing: border-box;
 	margin-right: 10px;
 }
 
-.button:hover,
+.button:hover {
+	border: 2px solid #6000bf	;
+}
 .button:focus,
 .button:active {
-	border: 2px solid #181b35;
-	background-color: #221c35;
+	border: 2px solid #6000bf	;
+	background-color: #3f195F;
 	color: #eeffff;
 }
