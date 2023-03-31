@@ -6,14 +6,21 @@ import { TextInput } from './ui/TextInput.jsx';
 import { DrinkList } from './DrinkList.jsx';
 
 export const DrinkSearch = ({ clickFn }) => {
-	const [searchField, setSearchField] = useState("americano");
+	const [searchField, setSearchField] = useState("");
+	const handleChange = (event) => setSearchField(event.target.value) 
+	const matchedDrinks = availableDrinks.filter(drink => { return drink.name.toLowerCase().includes(searchField.toLowerCase()) });
 
 	return (
 		<div className="drink-search">
 			<label>You can search for available drinks here:</label>
-			<TextInput />
-			{searchField && (<p>Search results for: {searchField}</p>)}
-			<DrinkList className="list" drinks={availableDrinks} clickFn={clickFn} />
+			<TextInput changeFn={handleChange} />
+			{searchField ?
+				<>
+					<p>Search results: </p>
+					<DrinkList className="list" drinks={matchedDrinks} clickFn={clickFn} />
+				</>
+				:
+				<DrinkList className="list" drinks={availableDrinks} clickFn={clickFn} />}
 		</div>
 	);
 };

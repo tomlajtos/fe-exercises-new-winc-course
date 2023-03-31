@@ -9,4 +9,9 @@
 - Functionality #2:
 	- reseting the user's choice with a dedicated button
 
-	-update and use the `<Button />` component
+	- update and use the `<Button />` component
+
+- Functionality #3:
+	- implement search function
+	- extend the `<TextInput/>` and  `<DrinkSearch/>` components
+	- write filter function and use it as __drinks prop__ instead of __availableDrinks__
