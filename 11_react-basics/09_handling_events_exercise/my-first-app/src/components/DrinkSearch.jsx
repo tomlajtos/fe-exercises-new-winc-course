@@ -24,3 +24,4 @@ export const DrinkSearch = ({ clickFn }) => {
 		</div>
 	);
 };
+
