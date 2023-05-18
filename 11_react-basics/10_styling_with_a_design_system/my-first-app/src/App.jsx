@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 // interactive drink coice will come in future exercise (R. state)
-import { ChakraProviderj } from "@chakra-ui/react";
+import { Heading } from "@chakra-ui/react";
 import { useState } from "react";
 import "./App.css";
 import { DrinkChoice } from "./components/DrinkChoice.jsx";
@@ -15,7 +15,9 @@ export const App = () => {
         <DrinkChoice drink={userDrink} clickFn={setUserDrink} />
       ) : (
         <>
-          <h1>{greeting}</h1>
+          <Heading mb={4} fontSize={"4xl"} color={"purple.900"}>
+            {greeting}
+          </Heading>
           <DrinkSearch clickFn={setUserDrink} />
         </>
       )}
