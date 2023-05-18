@@ -1,0 +1,13 @@
+.text-input {
+	margin-bottom: 10px;
+	padding: 0.5rem 0.75rem;
+	min-width: 400px;
+	height: 1.5rem;
+	border: 2px solid #60009f;
+	border-radius: 10px;
+	font-size: 1rem;
+}
+
+.text-input::placeholder {
+	font-size: 1rem;
+}

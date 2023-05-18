@@ -1,5 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 // interactive drink coice will come in future exercise (R. state)
+import { ChakraProviderj } from "@chakra-ui/react";
 import { useState } from "react";
 import "./App.css";
 import { DrinkChoice } from "./components/DrinkChoice.jsx";
