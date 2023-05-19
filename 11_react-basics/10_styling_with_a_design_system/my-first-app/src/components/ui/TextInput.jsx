@@ -5,7 +5,6 @@ export const TextInput = ({ changeFn, ...props }) => {
     <Input
       variant="outline"
       focusBorderColor="purple.500"
-      className="text-input"
       type="text"
       placeholder="Type the name of the drink..."
       onChange={changeFn}
