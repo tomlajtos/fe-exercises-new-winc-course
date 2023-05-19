@@ -1,8 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 // interactive drink coice will come in future exercise (R. state)
-import { Heading } from "@chakra-ui/react";
+import { Heading, Flex } from "@chakra-ui/react";
 import { useState } from "react";
-import "./App.css";
 import { DrinkChoice } from "./components/DrinkChoice.jsx";
 import { DrinkSearch } from "./components/DrinkSearch";
 
@@ -10,7 +9,7 @@ export const App = () => {
   const greeting = "Welcome to our cafe!";
   const [userDrink, setUserDrink] = useState();
   return (
-    <div className="App">
+    <Flex direction="column" align="center" minH="full" px={4} py={10}>
       {userDrink ? (
         <DrinkChoice drink={userDrink} clickFn={setUserDrink} />
       ) : (
@@ -21,6 +20,6 @@ export const App = () => {
           <DrinkSearch clickFn={setUserDrink} />
         </>
       )}
-    </div>
+    </Flex>
   );
 };

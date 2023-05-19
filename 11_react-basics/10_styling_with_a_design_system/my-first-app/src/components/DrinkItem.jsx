@@ -4,14 +4,13 @@ export const DrinkItem = ({ drink, clickFn }) => {
   return (
     <>
       <Center
-        my={2}
         p={4}
         w={250}
         border="1px"
         borderColor="transparent"
         boxSizing="border-box"
         _hover={{
-          border: "1px",
+          border: "2px",
           borderColor: "purple.100",
           borderRadius: "lg",
           cursor: "pointer",
