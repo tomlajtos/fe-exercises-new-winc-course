@@ -1,6 +1,6 @@
 import { useState } from "react";
+import { Flex, Text, FormLabel } from "@chakra-ui/react";
 import { availableDrinks } from "../utils/data.js";
-import "./DrinkSearch.css";
 import { TextInput } from "./ui/TextInput.jsx";
 import { DrinkList } from "./DrinkList.jsx";
 
@@ -12,25 +12,19 @@ export const DrinkSearch = ({ clickFn }) => {
   });
 
   return (
-    <div className="drink-search">
-      <label>You can search for available drinks here:</label>
+    <Flex mt={4} direction="column" align="center" gap={4}>
+      <FormLabel fontSize="md" color="gray.600">
+        You can search for available drinks here:
+      </FormLabel>
       <TextInput changeFn={handleChange} mb={8} w={400} />
       {searchField ? (
         <>
-          <p>Search results: </p>
-          <DrinkList
-            className="list"
-            drinks={matchedDrinks}
-            clickFn={clickFn}
-          />
+          <Text>Search results: </Text>
+          <DrinkList drinks={matchedDrinks} clickFn={clickFn} />
         </>
       ) : (
-        <DrinkList
-          className="list"
-          drinks={availableDrinks}
-          clickFn={clickFn}
-        />
+        <DrinkList drinks={availableDrinks} clickFn={clickFn} />
       )}
-    </div>
+    </Flex>
   );
 };
