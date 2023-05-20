@@ -1,14 +1,14 @@
-import { Button } from "@chakra-ui/react";
+import { Button as UiButton } from "@chakra-ui/react";
 
-export const UiButton = ({ text, clickFn }) => {
+export const Button = ({ text, clickFn }) => {
   return (
-    <Button
+    <UiButton
       variant="outline"
       colorScheme="purple"
       type="button"
       onClick={clickFn}
     >
       {text}
-    </Button>
+    </UiButton>
   );
 };

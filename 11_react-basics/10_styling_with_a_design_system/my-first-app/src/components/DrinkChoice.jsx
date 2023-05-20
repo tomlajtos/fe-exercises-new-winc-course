@@ -1,7 +1,6 @@
-/* eslint-disable react/react-in-jsx-scope */
 import { Flex, Spacer, Text, Image } from "@chakra-ui/react";
-import { UiButton } from "./ui/UiButton.jsx";
-import { availableDrinks } from "../utils/data";
+import { Button } from "./ui/Button";
+// import { availableDrinks } from "../utils/data";
 
 export const DrinkChoice = ({ drink, clickFn }) => {
   return (
@@ -13,7 +12,7 @@ export const DrinkChoice = ({ drink, clickFn }) => {
           Your drink will be ready in a couple of minutes...
         </Text>
         <Spacer />
-        <UiButton text={"Change selection"} clickFn={() => clickFn()} />
+        <Button text={"Change selection"} clickFn={() => clickFn()} />
       </Flex>
     </>
   );
