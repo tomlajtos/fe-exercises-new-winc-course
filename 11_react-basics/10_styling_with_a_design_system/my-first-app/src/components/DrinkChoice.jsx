@@ -1,6 +1,5 @@
-/* eslint-disable react/react-in-jsx-scope */
 import { Flex, Spacer, Text, Image } from "@chakra-ui/react";
-import { UiButton } from "./ui/UiButton.jsx";
+import { UiButton } from "./ui/Button.jsx";
 import { availableDrinks } from "../utils/data";
 
 export const DrinkChoice = ({ drink, clickFn }) => {

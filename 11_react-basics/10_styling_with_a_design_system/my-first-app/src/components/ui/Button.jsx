@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Flex, Text, FormLabel } from "@chakra-ui/react";
-import { availableDrinks } from "../utils/data.js";
 import { TextInput } from "./ui/TextInput.jsx";
 import { DrinkList } from "./DrinkList.jsx";
+import { availableDrinks } from "../utils/data.js";
 
 export const DrinkSearch = ({ clickFn }) => {
   const [searchField, setSearchField] = useState("");
