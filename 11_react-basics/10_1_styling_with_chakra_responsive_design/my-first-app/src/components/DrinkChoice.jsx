@@ -19,7 +19,14 @@ export const DrinkChoice = ({ drink, clickFn }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Flex direction="column" align="center" gap={8}>
+      <Flex
+        direction="column"
+        alignItems="center"
+        justifyItems={"center"}
+        height={"full"}
+        gap={8}
+      >
+        <Spacer />
         <Heading fontSize="3xl">Your choice: {drink.name}</Heading>
         <Image w={250} h={250} src={drink.imgUrl} alt={drink.alt} />
         <Text fontSize="xl">
@@ -34,20 +41,39 @@ export const DrinkChoice = ({ drink, clickFn }) => {
             variant={"outline"}
           />
         </Flex>
+        <Spacer />
       </Flex>
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal
+        size={{ base: "full", sm: "sm", md: "md" }}
+        isOpen={isOpen}
+        onClose={onClose}
+      >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Please confirm your order</ModalHeader>
+          <ModalHeader mt={[12, 2]} textAlign={["center", "left"]}>
+            Please confirm your order
+          </ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
-            <Flex align={"center"} justify={"center"} gap={4} p={4}>
-              <Image w={50} h={50} src={drink.imgUrl} alt={drink.alt} />
-              <Text fontSize={"lg"}>{drink.name}</Text>
+          <ModalBody display="flex" alignItems="center" justify="center">
+            <Flex
+              direction={["column", "row"]}
+              alignItems={"center"}
+              justify={"center"}
+              gap={4}
+              p={4}
+              w={"full"}
+            >
+              <Image
+                w={[150, 50]}
+                h={[150, 50]}
+                src={drink.imgUrl}
+                alt={drink.alt}
+              />
+              <Text fontSize={["2xl", "lg"]}>{drink.name}</Text>
             </Flex>
           </ModalBody>
 
-          <ModalFooter>
+          <ModalFooter mb={[4, 2]}>
             <Button variant="solid" mr={2} text="Confirm" />
             <Button text={"Cancel"} onClick={onClose} />
           </ModalFooter>

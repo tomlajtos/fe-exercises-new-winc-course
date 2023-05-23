@@ -7,7 +7,7 @@ export const App = () => {
   const greeting = "Welcome to our cafe!";
   const [userDrink, setUserDrink] = useState();
   return (
-    <Flex direction="column" align="center" minH="full" px={4} py={10}>
+    <Flex direction={["column"]} align="center" px={4} py={10} size={"full"}>
       {userDrink ? (
         <DrinkChoice drink={userDrink} clickFn={setUserDrink} />
       ) : (
