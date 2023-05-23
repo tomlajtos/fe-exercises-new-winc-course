@@ -12,11 +12,11 @@ export const DrinkSearch = ({ clickFn }) => {
   });
 
   return (
-    <Flex mt={4} direction="column" align="center" gap={4}>
+    <Flex mt={4} direction="column" align="center" gap={2}>
       <FormLabel fontSize="md" color="gray.600">
         You can search for available drinks here:
       </FormLabel>
-      <TextInput changeFn={handleChange} mb={8} w={400} />
+      <TextInput changeFn={handleChange} mb={8} w={["100%", 400, 450]} />
       {searchField ? (
         <>
           <Text>Search results: </Text>

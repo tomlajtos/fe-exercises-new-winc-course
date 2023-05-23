@@ -23,13 +23,19 @@ export const DrinkChoice = ({ drink, clickFn }) => {
         direction="column"
         alignItems="center"
         justifyItems={"center"}
-        height={"full"}
+        h={"100vh"}
         gap={8}
+        py={[8, null, null, 16]}
       >
-        <Spacer />
         <Heading fontSize="3xl">Your choice: {drink.name}</Heading>
-        <Image w={250} h={250} src={drink.imgUrl} alt={drink.alt} />
-        <Text fontSize="xl">
+        <Spacer />
+        <Image
+          w={[175, 200, 250]}
+          h={[175, 200, 250]}
+          src={drink.imgUrl}
+          alt={drink.alt}
+        />
+        <Text fontSize="xl" align="center">
           If this is the drink you want, please go ahead with your order.
         </Text>
         <Spacer />
@@ -41,7 +47,6 @@ export const DrinkChoice = ({ drink, clickFn }) => {
             variant={"outline"}
           />
         </Flex>
-        <Spacer />
       </Flex>
       <Modal
         size={{ base: "full", sm: "sm", md: "md" }}
@@ -59,7 +64,7 @@ export const DrinkChoice = ({ drink, clickFn }) => {
               direction={["column", "row"]}
               alignItems={"center"}
               justify={"center"}
-              gap={4}
+              gap={[8, 4]}
               p={4}
               w={"full"}
             >
@@ -69,7 +74,9 @@ export const DrinkChoice = ({ drink, clickFn }) => {
                 src={drink.imgUrl}
                 alt={drink.alt}
               />
-              <Text fontSize={["2xl", "lg"]}>{drink.name}</Text>
+              <Text fontSize={["2xl", "lg"]} fontWeight={[600, 500]}>
+                {drink.name}
+              </Text>
             </Flex>
           </ModalBody>
 
