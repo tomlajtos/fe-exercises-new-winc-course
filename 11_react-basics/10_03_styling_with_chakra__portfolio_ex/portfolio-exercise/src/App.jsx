@@ -8,7 +8,7 @@ import { PortfolioPage } from "./components/PortfolioPage";
 export const App = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   return (
-    <Container minW="100%" minH="100vh">
+    <Container minW="100%" minH="100vh" bg={"gray.50"} p={[0, 0, 2]}>
       {selectedItem ? (
         <PortfolioItemPage item={selectedItem} handleClick={setSelectedItem} />
       ) : (
