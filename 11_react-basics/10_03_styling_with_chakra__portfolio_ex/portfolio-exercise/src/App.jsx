@@ -1,22 +1,22 @@
 import React, { useState } from "react";
-
+import { Container } from "@chakra-ui/react";
 import { portfolioItems } from "./utils/data";
 
 import { PortfolioItemPage } from "./components/PortfolioItemPage";
 import { PortfolioPage } from "./components/PortfolioPage";
 
 export const App = () => {
-  console.log(portfolioItems); // Check console to see how portfolioItems look like. You can delete this after.
-  const [selectedItem, setSelectedItem] = useState();
+  const [selectedItem, setSelectedItem] = useState(null);
   return (
-    <>
-      <div className="App">
-        {selectedItem ? (
-          <PortfolioItemPage item={selectedItem} />
-        ) : (
-          <PortfolioPage />
-        )}
-      </div>
-    </>
+    <Container minW="100%" minH="100vh">
+      {selectedItem ? (
+        <PortfolioItemPage item={selectedItem} handleClick={setSelectedItem} />
+      ) : (
+        <PortfolioPage
+          handleSelection={setSelectedItem}
+          items={portfolioItems}
+        />
+      )}
+    </Container>
   );
 };
