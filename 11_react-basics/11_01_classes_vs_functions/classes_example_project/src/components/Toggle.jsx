@@ -11,6 +11,7 @@ export class Toggle extends Component {
     this.setState((prevState) => ({
       isToggleOn: !prevState.isToggleOn,
     }));
+    this.props.changeOnClick(!this.props.logoR);
   }
 
   render() {

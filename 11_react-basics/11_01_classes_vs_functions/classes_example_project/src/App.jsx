@@ -1,10 +1,12 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import { Toggle } from "./components/Toggle";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  const [logoR, setLogoR] = useState(false);
 
   return (
     <>
@@ -12,9 +14,11 @@ function App() {
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        {logoR && (
+          <a href="https://react.dev" target="_blank">
+            <img src={reactLogo} className="logo react" alt="React logo" />
+          </a>
+        )}
       </div>
       <h1>Vite + React</h1>
       <div className="card">
@@ -28,8 +32,11 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <hr />
+      <h3>Click the button below to toggle the React logo on/off</h3>
+      <Toggle logoR={logoR} changeOnClick={setLogoR} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
