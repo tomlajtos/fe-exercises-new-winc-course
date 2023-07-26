@@ -6,7 +6,9 @@ import { DrinkList } from "./DrinkList.jsx";
 
 export const DrinkSearch = ({ clickFn }) => {
   const [searchField, setSearchField] = useState("");
+
   const handleChange = (event) => setSearchField(event.target.value);
+
   const matchedDrinks = availableDrinks.filter((drink) => {
     return drink.name.toLowerCase().includes(searchField.toLowerCase());
   });
