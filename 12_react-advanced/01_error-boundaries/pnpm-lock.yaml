@@ -31,6 +31,9 @@ devDependencies:
   happy-dom:
     specifier: ^10.5.2
     version: 10.5.2
+  typescript:
+    specifier: ^5.1.6
+    version: 5.1.6
   vite:
     specifier: ^4.4.7
     version: 4.4.7(@types/node@20.4.5)
@@ -1700,6 +1703,12 @@ packages:
   /type-detect@4.0.8:
     resolution: {integrity: sha512-0fr/mIH1dlO+x7TlcMy+bIDqKPsw/70tVyeHW787goQjhmqaZe10uwLujubK9q9Lg6Fiho1KUKDYz0Z7k7g5/g==}
     engines: {node: '>=4'}
+    dev: true
+
+  /typescript@5.1.6:
+    resolution: {integrity: sha512-zaWCozRZ6DLEWAWFrVDz1H6FVXzUSfTy5FUMWsQlU8Ym5JP9eO4xkTIROFCQvhQf61z6O/G6ugw3SgAnvvm+HA==}
+    engines: {node: '>=14.17'}
+    hasBin: true
     dev: true
 
   /ufo@1.1.2:
