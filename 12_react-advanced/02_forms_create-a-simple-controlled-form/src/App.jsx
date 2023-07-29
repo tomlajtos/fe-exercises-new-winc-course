@@ -15,11 +15,13 @@ function App() {
   const addQuote = (e) => {
     e.preventDefault();
     const id = `q_${quotes.length + 1}`;
-    setQuotes([{ id: id, quote: quote, author: author }].concat(quotes)); // alt: setQuotes([{id:id, quote:quote, author:author}, ...quotes]);
+    setQuotes([{ id, quote, author }].concat(quotes));
+    // alt: setQuotes((quotes)=>[{id, quote, author}, ...quotes]), ??? why do we wrap it in a function here?;
     setQuote("");
     setAuthor("");
   };
-
+  console.log("App rendered");
+  console.log(quotes);
   return (
     <div className="App">
       <h1>Add your favorite quotes:</h1>
