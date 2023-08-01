@@ -30,7 +30,7 @@ export default () => {
   return (
     <div className="App">
       <h1>Prop Drilling and Component Composition</h1>
-      <Books books={books} borrowBook={borrowBook} returnBool={returnBook} />
+      <Books books={books} borrowBook={borrowBook} returnBook={returnBook} />
     </div>
   );
 };
