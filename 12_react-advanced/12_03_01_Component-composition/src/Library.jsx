@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { collection } from "./collection";
+import { Books } from "./Books";
 
 export default () => {
   const [books, setBooks] = useState(collection.books);
@@ -29,6 +30,7 @@ export default () => {
   return (
     <div className="App">
       <h1>Prop Drilling and Component Composition</h1>
+      <Books books={books} borrowBook={borrowBook} returnBool={returnBook} />
     </div>
   );
 };
