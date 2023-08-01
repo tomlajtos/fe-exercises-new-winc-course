@@ -4,7 +4,6 @@ export const Books = ({ books, borrowBook, returnBook }) => {
   const programmingBooks = books.filter((book) =>
     book.category.includes("programming"),
   );
-  console.log(programmingBooks);
   return (
     <>
       <h2>Books: {books.length}</h2>
