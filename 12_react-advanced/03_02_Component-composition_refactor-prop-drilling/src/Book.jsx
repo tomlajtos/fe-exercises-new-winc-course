@@ -1,3 +1,4 @@
+import { Button } from "./Button";
 export const Book = ({ book, borrowBook, returnBook }) => {
   const { id, title, author, available } = book;
   const titleColor = available ? "#00c853" : "#d50000";
@@ -7,21 +8,17 @@ export const Book = ({ book, borrowBook, returnBook }) => {
       <h4 style={{ color: titleColor }}>{title}</h4>
       <p>{author}</p>
       {available ? (
-        <button
-          type={"button"}
-          style={{ backgroundColor: buttonColor }}
+        <Button
+          text={"Borrow"}
+          color={buttonColor}
           onClick={() => borrowBook(id)}
-        >
-          Borrow
-        </button>
+        />
       ) : (
-        <button
-          type={"button"}
-          style={{ backgroundColor: buttonColor }}
+        <Button
+          text={"Return"}
+          color={buttonColor}
           onClick={() => returnBook(id)}
-        >
-          Return
-        </button>
+        />
       )}
     </>
   );
