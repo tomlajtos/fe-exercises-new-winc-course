@@ -6,9 +6,13 @@ export const Books = ({ books, borrowBook, returnBook }) => {
   );
   return (
     <>
-      <h2>Books: {books.length}</h2>
+      <h2>Books</h2>
+      <p>{`(there are ${books.length} books in the library)`}</p>
+      <hr style={{ opacity: 0.4 }} />
+
       <Category
         books={programmingBooks}
+        title={"Programming"}
         borrowBook={borrowBook}
         returnBook={returnBook}
       />
