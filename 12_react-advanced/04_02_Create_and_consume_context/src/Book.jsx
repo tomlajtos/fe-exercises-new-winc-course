@@ -1,3 +1,5 @@
+//TODO: book is also in context acording to course material, will learn more about it later
+
 import { useContext } from "react";
 import { LibraryContext } from "./LibraryContext";
 
