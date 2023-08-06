@@ -19,8 +19,8 @@ function Library() {
   };
   return (
     <div className="App">
+      <h1>Library</h1>
       <LibraryContext.Provider value={{ books, borrowBook, returnBook }}>
-        <h1>Library</h1>
         <Books />
       </LibraryContext.Provider>
     </div>
