@@ -1,19 +1,19 @@
+import { useContext } from "react";
+import { LibraryContext } from "./Library";
 import { Book } from "./Book";
 
-export const Category = ({ title, books, borrowBook, returnBook }) => {
+export const Category = ({ category }) => {
+  const { books } = useContext(LibraryContext);
   return (
     <>
       <h3>
         {title} ({books.length}):
       </h3>
-      {books.map((book) => (
-        <Book
-          key={book.id}
-          book={book}
-          borrowBook={borrowBook}
-          returnBook={returnBook}
-        />
-      ))}
+      {books
+        .filter((book) => book.category === category)
+        .map((book) => (
+          <Book key={book.id} book={book} />
+        ))}
     </>
   );
 };
