@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { LibraryContext } from "./Library";
+import { LibraryContext } from "./LibraryContext";
 import { Book } from "./Book";
 
 export const Category = ({ category }) => {
@@ -7,7 +7,7 @@ export const Category = ({ category }) => {
   return (
     <>
       <h3>
-        {title} ({books.length}):
+        {category} ({books.length}):
       </h3>
       {books
         .filter((book) => book.category === category)
