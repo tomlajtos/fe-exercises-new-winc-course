@@ -14,9 +14,9 @@ export default () => {
 
   const canBorrowBooks = booksBorrowed.length < maxBooksBorrowed;
 
-  const borrowBook = id => {
+  const borrowBook = (id) => {
     if (!canBorrowBooks) return false;
-    const newBooks = books.map(book => {
+    const newBooks = books.map((book) => {
       if (book.id === id) {
         book.available = false;
       }
@@ -24,12 +24,12 @@ export default () => {
     });
     setBooks(newBooks);
 
-    const book = books.find(book => book.id === id);
+    const book = books.find((book) => book.id === id);
     setBooksBorrowed(booksBorrowed.concat(book));
   };
 
-  const returnBook = id => {
-    const newBooks = books.map(book => {
+  const returnBook = (id) => {
+    const newBooks = books.map((book) => {
       if (book.id === id) {
         book.available = true;
       }
@@ -37,11 +37,11 @@ export default () => {
     });
     setBooks(newBooks);
 
-    setBooksBorrowed(booksBorrowed.filter(book => book.id !== id));
+    setBooksBorrowed(booksBorrowed.filter((book) => book.id !== id));
   };
 
   const programmingBooks = books.filter(
-    book => book.category === "programming"
+    (book) => book.category === "programming",
   );
 
   return (
@@ -51,7 +51,7 @@ export default () => {
         <BooksBorrowed />
         <Books amount={books.length}>
           <Category title="Programming" amount={programmingBooks.length}>
-            {programmingBooks.map(book => (
+            {programmingBooks.map((book) => (
               <Book
                 key={book.id}
                 book={book}
