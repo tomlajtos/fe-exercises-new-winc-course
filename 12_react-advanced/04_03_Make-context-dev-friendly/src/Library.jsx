@@ -1,6 +1,8 @@
-// TODO: clarify Context import comment in course material
-// reffering to files importing things from eachother? -
-// description on how to import L.context is super unclear and results in an error as well
+// TODO:
+// Find out what's going on or provide feedback about material:
+// * find clarification for Context import comment in course material
+//   reffering to files importing things from eachother? >> Exercise 4/4-Creating and Consuming Context (task guide)
+// * description on how to import Library context is super unclear and results in an error as well
 
 import { useState } from "react";
 import { collection } from "./collection";
