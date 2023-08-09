@@ -1,10 +1,10 @@
 //TODO: book is also in context acording to course material, will learn more about it later
 
-import { useContext } from "react";
-import { LibraryContext } from "./LibraryContext";
+import { useLibrary } from "./useLibrary";
+// import { LibraryContext } from "./LibraryContext";
 
 export const Book = ({ book }) => {
-  const { borrowBook, returnBook } = useContext(LibraryContext);
+  const { borrowBook, returnBook } = useLibrary();
   return (
     <>
       <h4>📖 {book.title}</h4>

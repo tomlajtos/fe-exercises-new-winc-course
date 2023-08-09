@@ -1,9 +1,9 @@
-import { useContext } from "react";
-import { LibraryContext } from "./LibraryContext";
+import { useLibrary } from "./useLibrary";
+// import { LibraryContext } from "./LibraryContext";
 import { Book } from "./Book";
 
 export const Category = ({ category }) => {
-  const { books } = useContext(LibraryContext);
+  const { books } = useLibrary();
   return (
     <>
       <h3>
