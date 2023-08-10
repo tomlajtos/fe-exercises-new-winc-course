@@ -5,7 +5,8 @@ const createInitialState = () => new Date().getFullYear() - 1945;
 const App = () => {
   const [name, setName] = useState("eman ym");
   const [age, setAge] = useState(createInitialState);
-  console.log(age);
+  const [version, setVersion] = useState(0);
+
   const handleClick = () => {
     setName((n) => n + "o");
     console.log(name);
@@ -15,6 +16,10 @@ const App = () => {
 
   const addOneYear = () => {
     setAge((a) => a + 1);
+  };
+
+  const resetAge = () => {
+    setAge(createInitialState);
   };
 
   return (
@@ -27,6 +32,10 @@ const App = () => {
       <p>Age: {age}</p>
       <button type={"button"} onClick={addOneYear}>
         Birthday
+      </button>
+      <hr />
+      <button type={"button"} onClick={resetAge}>
+        Reset Age
       </button>
     </div>
   );
