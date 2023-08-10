@@ -1,25 +1,19 @@
 import { useState } from "react";
 
-const createInitialState = () => new Date().getFullYear() - 1945;
+const createInitialAge = () => new Date().getFullYear() - 1945;
 
 export const Person = ({ reset }) => {
   const [name, setName] = useState("eman ym");
-  const [age, setAge] = useState(createInitialState);
+  const [age, setAge] = useState(createInitialAge);
 
   const handleClick = () => {
     setName((n) => n + "o");
-    console.log(name);
     setName((n) => n + "o");
-    console.log(name);
   };
 
-  const addOneYear = () => {
+  const handleBirthdayClick = () => {
     setAge((a) => a + 1);
   };
-
-  // const resetAge = () => {
-  //   setAge(createInitialState);
-  // };
 
   return (
     <>
@@ -28,7 +22,7 @@ export const Person = ({ reset }) => {
         Change name
       </button>
       <p>Age: {age}</p>
-      <button type={"button"} onClick={addOneYear}>
+      <button type={"button"} onClick={handleBirthdayClick}>
         Birthday
       </button>
       <hr />

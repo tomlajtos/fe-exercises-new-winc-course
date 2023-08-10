@@ -4,10 +4,7 @@ import { Person } from "./Person";
 const App = () => {
   const [version, setVersion] = useState(0);
 
-  const handleReset = () => {
-    setVersion(version + 1);
-    console.log(version);
-  };
+  const handleReset = () => setVersion(version + 1);
 
   return (
     <div className="App">
