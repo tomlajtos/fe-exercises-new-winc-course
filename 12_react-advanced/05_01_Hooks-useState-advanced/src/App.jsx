@@ -14,6 +14,10 @@ const App = () => {
     console.log(name);
   };
 
+  const handleReset = () => {
+    setVersion((v) => v + 1);
+  };
+
   const addOneYear = () => {
     setAge((a) => a + 1);
   };
