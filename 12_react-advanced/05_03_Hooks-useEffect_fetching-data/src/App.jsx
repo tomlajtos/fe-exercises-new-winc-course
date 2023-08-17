@@ -39,7 +39,16 @@ const App = () => {
         <div>
           <h2>{person.name}</h2>
           <p>Age: {person.age}</p>
-          <p>Hobbies: {person.hobbies}</p>
+          <p>
+            <span>Hobbies: </span>
+            {person.hobbies.map((hobby, i, a) => {
+              if (i + 1 !== a.length) {
+                return <span key={hobby}>{hobby}, </span>;
+              } else {
+                return <span key={hobby}>{hobby}</span>;
+              }
+            })}
+          </p>
         </div>
       ) : people.length && !id ? (
         <div>
