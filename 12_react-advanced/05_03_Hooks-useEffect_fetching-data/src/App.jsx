@@ -8,13 +8,24 @@ const App = () => {
   const [person, setPerson] = useState(null);
   const [id, setId] = useState(null);
   useEffect(() => {
-    console.log("using Effect to fetch people");
     async function getPeople() {
       const json = await fetchPeople();
       setPeople(json);
     }
     getPeople();
   }, []);
+
+  useEffect(() => {
+    async function getPerson() {
+      if (id) {
+        const json = await fetchPerson(id);
+        setPerson(json);
+      }
+    }
+    getPerson();
+    return () => setPerson(null);
+  }, [id]);
+
   return (
     <div className="App">
       <h1>React Hooks Exercise Starter</h1>
@@ -24,11 +35,19 @@ const App = () => {
             {person.name}
           </button>
         ))}
-      {person && (
+      {person ? (
         <div>
           <h2>{person.name}</h2>
           <p>Age: {person.age}</p>
           <p>Hobbies: {person.hobbies}</p>
+        </div>
+      ) : people.length && !id ? (
+        <div>
+          <h2>Please select a person</h2>
+        </div>
+      ) : (
+        <div>
+          <h2>Loading, please wait...</h2>
         </div>
       )}
     </div>
