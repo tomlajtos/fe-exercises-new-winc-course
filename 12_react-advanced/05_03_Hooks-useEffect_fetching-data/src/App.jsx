@@ -7,15 +7,23 @@ const App = () => {
   const [people, setPeople] = useState([]);
   const [person, setPerson] = useState(null);
   const [id, setId] = useState(null);
-
+  useEffect(() => {
+    console.log("using Effect to fetch people");
+    async function getPeople() {
+      const json = await fetchPeople();
+      setPeople(json);
+    }
+    getPeople();
+  }, []);
   return (
     <div className="App">
       <h1>React Hooks Exercise Starter</h1>
-      {people.map((person) => (
-        <button key={person.id} onClick={() => setId(person.id)}>
-          person.name
-        </button>
-      ))}
+      {people &&
+        people.map((person) => (
+          <button key={person.id} onClick={() => setId(person.id)}>
+            {person.name}
+          </button>
+        ))}
       {person && (
         <div>
           <h2>{person.name}</h2>
