@@ -7,7 +7,13 @@ const App = () => {
   const [people, setPeople] = useState([]);
   const [person, setPerson] = useState(null);
   const [id, setId] = useState(null);
+
   useEffect(() => {
+    console.log("App rendered");
+  });
+
+  useEffect(() => {
+    console.log("Fetching people...");
     async function getPeople() {
       const json = await fetchPeople();
       setPeople(json);
@@ -16,6 +22,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    console.log("Fetching person...");
     async function getPerson() {
       if (id) {
         const json = await fetchPerson(id);
@@ -23,7 +30,7 @@ const App = () => {
       }
     }
     getPerson();
-    return () => setPerson(null);
+    return () => setPerson(null); //cleanup
   }, [id]);
 
   return (
