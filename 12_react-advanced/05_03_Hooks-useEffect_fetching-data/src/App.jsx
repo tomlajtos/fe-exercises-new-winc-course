@@ -19,17 +19,25 @@ const App = () => {
       setPeople(json);
     }
     getPeople();
+    /**
+     * in one line:
+     * const fetch = async () => setPeople(await fetchPeople())
+     * then call fetch()
+     * */
   }, []);
 
   useEffect(() => {
     console.log("Fetching person...");
     async function getPerson() {
-      if (id) {
-        const json = await fetchPerson(id);
-        setPerson(json);
-      }
+      const json = await fetchPerson(id);
+      setPerson(json);
     }
     getPerson();
+    /**
+     * in one line:
+     * const fetch = async () => setPerson(await fetchPerson(id))
+     * then call fetch()
+     * */
     return () => setPerson(null); //cleanup
   }, [id]);
 
