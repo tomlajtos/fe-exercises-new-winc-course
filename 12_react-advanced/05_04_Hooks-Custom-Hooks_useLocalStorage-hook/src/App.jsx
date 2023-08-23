@@ -1,9 +1,13 @@
+import { useState } from "react";
+
 const App = () => {
-	return (
-		<div className="App">
-			<h1>React Hooks Exercise Starter</h1>
-		</div>
-	);
+  const [name, setName] = useState("Name-o");
+  return (
+    <div className="App">
+      <h1>Welcome {name}!</h1>
+      <input type={"text"} onChange={(e) => setName(e.target.value)}></input>
+    </div>
+  );
 };
 
 export default App;
