@@ -29,8 +29,14 @@ export const LibraryContextProvider = ({ children }) => {
     dispatch({ type: "return_book", id });
   };
 
+  const removeBook = (id) => {
+    dispatch({ type: "remove_book", id });
+  };
+
   return (
-    <LibraryContext.Provider value={{ books, borrowBook, returnBook }}>
+    <LibraryContext.Provider
+      value={{ books, borrowBook, returnBook, removeBook }}
+    >
       {children}
     </LibraryContext.Provider>
   );
@@ -67,6 +73,9 @@ const libraryReducer = (state, action) => {
         }
         return item;
       });
+    }
+    case "remove_book": {
+      return state.filter((item) => item.id !== action.id);
     }
     default: {
       return state;
