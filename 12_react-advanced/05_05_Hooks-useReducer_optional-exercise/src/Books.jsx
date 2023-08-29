@@ -1,5 +1,6 @@
 import { Category } from "./Category";
 import { useLibrary } from "./LibraryContext";
+import { AddBookForm } from "./AddBookForm";
 
 export const Books = () => {
   const { books } = useLibrary();
@@ -8,7 +9,7 @@ export const Books = () => {
       categories.includes(book.category)
         ? categories
         : categories.concat(book.category),
-    []
+    [],
   );
   return (
     <>
@@ -19,6 +20,7 @@ export const Books = () => {
           category={category}
         />
       ))}
+      <AddBookForm />
     </>
   );
 };
