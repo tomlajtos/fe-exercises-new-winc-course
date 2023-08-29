@@ -8,32 +8,20 @@ LibraryContext.displayName = "LibraryContext";
 const libraryReducer = (state, action) => {
   switch (action.type) {
     case "borrow_book": {
-      return state.map((item) => {
-        if (item.id === action.id) {
-          return {
-            ...item,
-            available: false,
-          };
-        }
-        return item;
-      });
+      return state.map((item) =>
+        item.id === action.id ? { ...item, available: false } : item,
+      );
     }
     case "return_book": {
-      return state.map((item) => {
-        if (item.id === action.id) {
-          return {
-            ...item,
-            available: true,
-          };
-        }
-        return item;
-      });
+      return state.map((item) =>
+        item.id === action.id ? { ...item, available: true } : item,
+      );
     }
     case "remove_book": {
       return state.filter((item) => item.id !== action.id);
     }
     case "add_book": {
-      const lastItem = state[state.length - 1];
+      const lastItem = state.at(-1);
       const newId = lastItem ? lastItem.id + 1 : 1;
       const item = {
         id: newId,
@@ -69,10 +57,10 @@ export const LibraryContextProvider = ({ children }) => {
     dispatch({ type: "add_book", ...props });
   };
 
+  const actions = { borrowBook, returnBook, removeBook, addBook };
+
   return (
-    <LibraryContext.Provider
-      value={{ books, borrowBook, returnBook, removeBook, addBook }}
-    >
+    <LibraryContext.Provider value={{ books, actions }}>
       {children}
     </LibraryContext.Provider>
   );

@@ -1,7 +1,9 @@
 import { useLibrary } from "./LibraryContext";
 
 export const AddBookForm = () => {
-  const { addBook } = useLibrary();
+  const {
+    actions: { addBook },
+  } = useLibrary();
 
   const submitForm = (event) => {
     event.preventDefault();

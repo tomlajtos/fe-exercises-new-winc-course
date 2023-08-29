@@ -1,7 +1,9 @@
 import { useLibrary } from "./LibraryContext";
 
 export const Book = ({ book }) => {
-  const { borrowBook, returnBook, removeBook } = useLibrary();
+  const {
+    actions: { borrowBook, returnBook, removeBook },
+  } = useLibrary();
   return (
     <>
       <h4>📖 {book.title}</h4>

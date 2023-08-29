@@ -14,8 +14,9 @@ export const Books = () => {
   return (
     <>
       <h2>Books ({books.length}):</h2>
-      {categories.map((category) => (
+      {categories.map((category, index) => (
         <Category
+          key={`${category}-${index}`}
           title={category[0].toUpperCase() + category.slice(1)}
           category={category}
         />
