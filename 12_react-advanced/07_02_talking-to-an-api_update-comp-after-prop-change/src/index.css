@@ -19,10 +19,14 @@ ul {
   list-style: none;
 }
 
+hr {
+  border: 1px solid #494748;
+}
+
 body {
   margin: 0;
   padding: 20px;
-  display: flex;
+  /* display: flex; */
   place-items: start;
   min-width: 320px;
   min-height: 100vh;
@@ -33,31 +37,44 @@ h1 {
 }
 .App {
   padding: 2rem 1rem;
+  align-self: stretch;
 }
 
 .container {
   margin-top: 2rem;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   > .userList {
-    padding-left: 1rem;
-    width: 40%;
-    /* list-style: none; */
+    padding: 0 0 2rem 1rem;
+    border-bottom: 2px solid #a2a1a0;
     > .userListItem:hover {
       font-weight: 800;
       cursor: pointer;
     }
   }
   > .userDetail {
-    width: 60%;
-    padding-left: 2rem;
-    border-left: 2px solid #a2a1a0;
+    padding-left: 1rem;
     > .userData {
       padding-left: 1rem;
 
       > .userDataType {
         font-weight: 600;
       }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    > .userList {
+      width: 30%;
+      padding-left: 1rem;
+    }
+    > .userDetail {
+      padding-left: 2rem;
+      border-left: 2px solid #a2a1a0;
+      width: 70%;
     }
   }
 }
