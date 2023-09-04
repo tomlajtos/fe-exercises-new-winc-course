@@ -5,13 +5,12 @@ const App = () => {
   const [userList, setUserList] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchUsers = async () => {
       const response = await fetch("http://localhost:3003/users");
-      const json = await response.json();
-      console.log(json);
-      setUserList(json);
+      const users = await response.json();
+      setUserList(users);
     };
-    fetchData();
+    fetchUsers();
   }, []);
 
   return (
