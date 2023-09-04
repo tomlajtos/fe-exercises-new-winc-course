@@ -15,6 +15,10 @@
   -webkit-text-size-adjust: 100%;
 }
 
+ul {
+  list-style: none;
+}
+
 body {
   margin: 0;
   padding: 20px;
@@ -38,7 +42,7 @@ h1 {
   > .userList {
     padding-left: 1rem;
     width: 40%;
-    list-style: none;
+    /* list-style: none; */
     > .userListItem:hover {
       font-weight: 800;
       cursor: pointer;
