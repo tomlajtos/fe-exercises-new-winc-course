@@ -1,17 +1,21 @@
 import { useState, useEffect } from "react";
 
 export const UserDetail = ({ user }) => {
+  const { id: userId, name, email, website, company } = user;
   const [posts, setPosts] = useState([]);
+
   useEffect(() => {
     let ignore = false;
+    setPosts([]); // reset posts state
+
     const fetchPosts = async () => {
       const response = await fetch(
-        `http://localhost:3003/users/${user.id}/posts`,
+        `http://localhost:3003/users/${userId}/posts`,
       );
-      const posts = await response.json();
+      const userPosts = await response.json();
       if (!ignore) {
-        console.log(posts);
-        setPosts(posts);
+        console.log(userPosts);
+        setPosts(userPosts);
       }
     };
     fetchPosts();
@@ -21,15 +25,15 @@ export const UserDetail = ({ user }) => {
 
   return user ? (
     <div className="userDetail">
-      <h2>{user.name}</h2>
+      <h2>{name}</h2>
       <p className="userData">
-        <span className="userDataType">email:</span> {user.email}
+        <span className="userDataType">email:</span> {email}
       </p>
       <p className="userData">
-        <span className="userDataType">website:</span> {user.website}
+        <span className="userDataType">website:</span> {website}
       </p>
       <p className="userData">
-        <span className="userDataType">company:</span> {user.company.name}
+        <span className="userDataType">company:</span> {company.name}
       </p>
       <hr />
       <h3>Posts</h3>
