@@ -83,6 +83,8 @@ hr {
     }
     > .userDetail {
       padding: 1rem 0 0 1rem;
+      width: 100%;
+      min-height: 75vh;
       border-top: 2px solid #a2a1a0;
       > .userData {
         padding-left: 1rem;
