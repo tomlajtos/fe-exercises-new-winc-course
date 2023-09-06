@@ -37,10 +37,10 @@ const App = () => {
 
   return (
     <div className="App">
-      <div className="usersPane">
-        <h1>Blogging site exercise </h1>
-        <p>(Exercise for Module-12/07 - Talking to an API)</p>
-        <div className="container">
+      <h1 className="title">Blogging site exercise </h1>
+      <p className="exrDesc">(Exercise for Module-12/07 - Talking to an API)</p>
+      <div className="content">
+        <div className="usersPane">
           <ul className="userList">
             {userList.map((user) => (
               <li

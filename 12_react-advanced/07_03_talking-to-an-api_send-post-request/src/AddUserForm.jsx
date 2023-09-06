@@ -16,7 +16,7 @@ export const AddUserForm = ({ createUser }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="userForm">
       <label>{"Name"}</label>
       <input
         type={"text"}
