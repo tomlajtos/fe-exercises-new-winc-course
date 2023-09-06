@@ -33,7 +33,7 @@ export const UserDetail = ({ user }) => {
         <span className="userDataType">website:</span> {website}
       </p>
       <p className="userData">
-        <span className="userDataType">company:</span> {company.name}
+        <span className="userDataType">company:</span> {company?.name}
       </p>
       <hr />
       <h3>Posts</h3>
