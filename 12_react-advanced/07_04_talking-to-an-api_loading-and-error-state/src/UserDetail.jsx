@@ -1,5 +1,30 @@
 import { useState, useEffect } from "react";
 
+// Unreliable, alternative fetch method to test Error and Loading states
+const flakyFetch = async (url) => {
+  // Sleep for a bit to simulate loading.
+  await new Promise((r) => setTimeout(r, 1000));
+
+  // 1/6 requests throw a JavaScript error
+  const randomValue = Math.random() * 100;
+  if (randomValue <= 16) {
+    throw new Error("The server did not respond");
+  }
+
+  // 1/6 responses return an invalid response
+  let response = await fetch(url);
+  if (randomValue <= 32) {
+    const data = { error: "Server error" };
+    const blob = new Blob([JSON.stringify(data, null, 2)], {
+      type: "application/json",
+    });
+
+    const init = { status: 500, statusText: "Server Error" };
+    response = new Response(blob, init);
+  }
+  return response;
+};
+
 export const UserDetail = ({ user }) => {
   const { id: userId, name, email, website, company } = user;
   const [posts, setPosts] = useState([]);
@@ -9,7 +34,8 @@ export const UserDetail = ({ user }) => {
     setPosts([]); // reset posts state
 
     const fetchPosts = async () => {
-      const response = await fetch(
+      // use flakyFetch for testing purposes
+      const response = await flakyFetch(
         `http://localhost:3003/users/${userId}/posts`,
       );
       const userPosts = await response.json();
