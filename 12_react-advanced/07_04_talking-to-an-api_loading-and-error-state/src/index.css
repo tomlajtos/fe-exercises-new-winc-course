@@ -1,0 +1,131 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  /* display: flex; */
+  place-items: start;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+ul {
+  list-style: none;
+  margin-bottom: 0;
+}
+
+hr {
+  border: 1px solid #494748;
+}
+
+.App {
+  padding: 2rem 1rem;
+  align-self: stretch;
+
+  > .title {
+    margin-top: 0;
+    font-size: 3rem;
+    line-height: 3rem;
+    height: fit-content;
+    text-align: center;
+  }
+  > .exrDesc {
+    text-align: center;
+  }
+
+  > .content {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    > .usersPane {
+      max-width: 375px;
+      min-width: 320px;
+      display: flex;
+      flex-direction: column;
+      padding: 0 1rem 2rem 0;
+      > .userList {
+        padding: 0 0 2rem 1rem;
+        border-bottom: 1px solid #494748;
+        > .userListItem:hover {
+          font-weight: 800;
+          cursor: pointer;
+        }
+      }
+      > .userForm {
+        padding: 1rem 0;
+        display: flex;
+        flex-direction: column;
+        row-gap: 1rem;
+        > button {
+          width: 50%;
+          align-self: flex-end;
+          margin-top: 1rem;
+          height: 2rem;
+          font-size: 1rem;
+        }
+      }
+    }
+    > .userDetail {
+      padding: 1rem 0 0 1rem;
+      width: 100%;
+      min-height: 75vh;
+      border-top: 2px solid #a2a1a0;
+      > .userData {
+        padding-left: 1rem;
+
+        > .userDataType {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .App {
+    > .title {
+      text-align: left;
+    }
+    > .exrDesc {
+      text-align: left;
+    }
+    > .content {
+      flex-direction: row;
+      align-items: flex-start;
+      > .usersPane {
+        border-bottom: none;
+        > .userList {
+          padding-left: 1rem;
+        }
+        > .userForm {
+          padding: 1rem 1rem 1rem 0;
+        }
+      }
+      > .userDetail {
+        padding-left: 3rem;
+        border-top: none;
+        border-left: 2px solid #a2a1a0;
+        width: 70%;
+        > h2 {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}
