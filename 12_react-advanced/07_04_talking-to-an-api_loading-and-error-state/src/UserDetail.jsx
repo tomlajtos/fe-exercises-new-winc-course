@@ -70,6 +70,21 @@ export const UserDetail = ({ user }) => {
     return () => (ignore = true);
   }, [user]);
 
+  if (isLoading) {
+    return (
+      <div>
+        <h2>Loading...</h2>
+      </div>
+    );
+  }
+  if (error.happened) {
+    return (
+      <div>
+        <h2>Error!</h2>
+        <p>{error.msg}</p>
+      </div>
+    );
+  }
   return user ? (
     <div className="userDetail">
       <h2>{name}</h2>
