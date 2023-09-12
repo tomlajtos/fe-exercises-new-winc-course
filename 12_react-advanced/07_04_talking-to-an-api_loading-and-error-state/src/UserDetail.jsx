@@ -28,20 +28,41 @@ const flakyFetch = async (url) => {
 export const UserDetail = ({ user }) => {
   const { id: userId, name, email, website, company } = user;
   const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState({ happened: false, msg: "" });
 
   useEffect(() => {
     let ignore = false;
-    setPosts([]); // reset posts state
+    // reset states
+    setPosts([]);
+    setIsLoading(true);
+    setError({ happened: false, msg: "" });
 
     const fetchPosts = async () => {
-      // use flakyFetch for testing purposes
-      const response = await flakyFetch(
-        `http://localhost:3003/users/${userId}/posts`,
-      );
-      const userPosts = await response.json();
-      if (!ignore) {
+      try {
+        // use flakyFetch for testing purposes
+        const response = await flakyFetch(
+          `http://localhost:3003/users/${userId}/posts`,
+        );
+        const userPosts = await response.json();
+        if (ignore) {
+          return;
+        }
+        if (!response.ok) {
+          setError({
+            happened: true,
+            msg: `${response.status}, ${response.statusText}`,
+          });
+          setIsLoading(false);
+          return;
+        }
         console.log(userPosts);
         setPosts(userPosts);
+        setIsLoading(false);
+      } catch (error) {
+        setError({ happened: true, msg: error.message });
+        setIsLoading(false);
+        return;
       }
     };
     fetchPosts();
