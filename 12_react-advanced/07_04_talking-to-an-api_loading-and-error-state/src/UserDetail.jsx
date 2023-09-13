@@ -87,7 +87,7 @@ export const UserDetail = ({ user }) => {
   }
   return user ? (
     <div className="userDetail">
-      <h2>{name}</h2>
+      <h2 className="userName">{name}</h2>
       <p className="userData">
         <span className="userDataType">email:</span> {email}
       </p>
@@ -98,14 +98,14 @@ export const UserDetail = ({ user }) => {
         <span className="userDataType">company:</span> {company?.name}
       </p>
       <hr />
-      <h3>Posts</h3>
+      <h3 className="postsSectionTitle">Posts</h3>
       <ul className="posts">
         {posts &&
           posts.map((post) => (
-            <li key={post.id}>
-              <article>
-                <h4>{post.title}</h4>
-                <p>{post.body}</p>
+            <li className={"postContainer"} key={post.id}>
+              <article className="post">
+                <h4 className={"postTitle"}>{post.title}</h4>
+                <p className={"postBody"}>{post.body}</p>
               </article>
             </li>
           ))}
