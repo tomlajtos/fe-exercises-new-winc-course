@@ -5,13 +5,13 @@ const flakyFetch = async (url) => {
   // Sleep for a bit to simulate loading.
   await new Promise((r) => setTimeout(r, 1000));
 
-  // 1/6 requests throw a JavaScript error
+  // 1/6 requests throws a JavaScript error
   const randomValue = Math.random() * 100;
   if (randomValue <= 16) {
     throw new Error("The server did not respond");
   }
 
-  // 1/6 responses return an invalid response
+  // 1/6 responses returns an invalid response
   let response = await fetch(url);
   if (randomValue <= 32) {
     const data = { error: "Server error" };

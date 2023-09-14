@@ -3,14 +3,14 @@ import { UserDetail } from "./UserDetail";
 import { AddUserForm } from "./AddUserForm";
 
 const App = () => {
-  const [userList, setUserList] = useState([]);
+  const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
+
   useEffect(() => {
     const fetchUsers = async () => {
       const response = await fetch("http://localhost:3003/users");
       const users = await response.json();
-      console.log(users);
-      setUserList(users);
+      setUsers(users);
     };
     fetchUsers();
   }, []);
@@ -20,16 +20,14 @@ const App = () => {
       const response = await fetch("http://localhost:3003/users", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json: charset=utf-8",
         },
         body: JSON.stringify(user),
       });
 
       const result = await response.json();
-      console.log("post successful", result);
       user = { id: result.id, ...user };
-      console.log("new user:", user);
-      setUserList([...userList, user]);
+      setUsers([...users, user]);
     } catch (error) {
       console.error("Error", error);
     }
@@ -41,10 +39,10 @@ const App = () => {
       <p className="exrDesc">(Exercise for Module-12/07 - Talking to an API)</p>
       <div className="content">
         <div className="usersPane">
-          <ul className="userList">
-            {userList.map((user) => (
+          <ul className="users">
+            {users.map((user) => (
               <li
-                className="userListItem"
+                className="usersItem"
                 key={user.id}
                 onClick={() => setSelectedUser(user)}
               >
