@@ -57,6 +57,7 @@ export const UserDetail = ({ user }) => {
           return;
         }
         console.log(userPosts);
+
         setPosts(userPosts);
         setIsLoading(false);
       } catch (error) {
@@ -70,13 +71,6 @@ export const UserDetail = ({ user }) => {
     return () => (ignore = true);
   }, [user]);
 
-  if (isLoading) {
-    return (
-      <div>
-        <h2>Loading...</h2>
-      </div>
-    );
-  }
   if (error.happened) {
     return (
       <div>
@@ -85,6 +79,15 @@ export const UserDetail = ({ user }) => {
       </div>
     );
   }
+
+  if (isLoading) {
+    return (
+      <div>
+        <h2>Loading...</h2>
+      </div>
+    );
+  }
+
   return user ? (
     <div className="userDetail">
       <h2 className="userName">{name}</h2>
