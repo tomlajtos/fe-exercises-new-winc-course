@@ -44,7 +44,7 @@ export const UserDetail = ({ user }) => {
 
       try {
         //use flakyFetch for testing error handling and Loading-state
-        let response = await flakyFetch(
+        response = await flakyFetch(
           `http://localhost:3003/users/${userId}/posts`,
         );
       } catch (error) {
