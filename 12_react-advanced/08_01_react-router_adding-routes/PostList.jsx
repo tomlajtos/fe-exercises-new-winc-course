@@ -1,7 +1,7 @@
 export const PostList = () => {
   return (
     <>
-      <div></div>
+      <div>post list</div>
     </>
   );
 };
