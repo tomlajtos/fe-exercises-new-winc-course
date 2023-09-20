@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import { NewPost } from "../NewPost";
-import { Post } from "../Post";
-import { PostList } from "../PostList";
-import { User } from "../User";
+import { NewPost } from "./NewPost";
+import { Post } from "./Post";
+import { PostList } from "./PostList";
+import { User } from "./User";
 
 const router = createBrowserRouter([
   { path: "/", element: <PostList /> },
