@@ -5,7 +5,7 @@ import "./index.css";
 import { Root } from "./Root";
 import { NewPost } from "./NewPost";
 import { Post } from "./Post";
-import { PostList } from "./PostList";
+import { PostList, loader as postListLoader } from "./PostList";
 import { User } from "./User";
 
 const router = createBrowserRouter([
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     children: [
       // PostList has the same path as its parent, Root '/' >>> PostList
       // will render in place of Outlet in Root by default
-      { path: "/", element: <PostList /> },
+      { path: "/", element: <PostList />, loader: postListLoader },
       { path: "/user/:userId", element: <User /> },
       { path: "/post/:postId", element: <Post /> },
       { path: "/post/new", element: <NewPost /> },
