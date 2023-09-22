@@ -1,13 +1,27 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 
 export const PostList = () => {
   const { users, posts } = useLoaderData();
   console.log(users, posts);
 
   return (
-    <>
-      <div>post list</div>
-    </>
+    <div className="post-list">
+      {posts.map((post) => (
+        <div className={"post"} key={post.id}>
+          <Link to={`/post/:${post.id}`}>
+            <h2>{post.title}</h2>
+          </Link>
+          {users.map((user) =>
+            user.id === post.userId ? (
+              <h3 key={user.id}>
+                <i>By {user.name}</i>
+              </h3>
+            ) : null,
+          )}
+          <p>{post.body.slice(0, 20)}...</p>
+        </div>
+      ))}
+    </div>
   );
 };
 
