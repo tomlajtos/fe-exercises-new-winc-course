@@ -9,12 +9,12 @@ export const PostList = () => {
     <div className="post-list">
       {posts.map((post) => (
         <div className={"post"} key={post.id}>
-          <Link to={`/post/:${post.id}`}>
+          <Link to={`/post/${post.id}`}>
             <h2>{post.title}</h2>
           </Link>
           {users.map((user) =>
             user.id === post.userId ? (
-              <Link to={`/user/:${post.userId}`} key={user.id}>
+              <Link to={`/user/${post.userId}`} key={user.id}>
                 <h3>
                   <i>By {user.name}</i>
                 </h3>
