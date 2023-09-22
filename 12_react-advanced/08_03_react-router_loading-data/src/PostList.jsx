@@ -2,7 +2,7 @@ import { useLoaderData, Link } from "react-router-dom";
 
 export const PostList = () => {
   const { users, posts } = useLoaderData();
-  console.log(users, posts);
+  // console.log(users, posts);
 
   // NOTE: the nested div struct was the exercise requirement (semantic tags would be better IMHO)
   return (
@@ -14,8 +14,8 @@ export const PostList = () => {
           </Link>
           {users.map((user) =>
             user.id === post.userId ? (
-              <Link to={`/user/:${post.userId}`}>
-                <h3 key={user.id}>
+              <Link to={`/user/:${post.userId}`} key={user.id}>
+                <h3>
                   <i>By {user.name}</i>
                 </h3>
               </Link>
