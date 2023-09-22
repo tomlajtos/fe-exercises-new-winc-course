@@ -35,7 +35,7 @@ export const User = () => {
 export const loader = async function ({ params }) {
   // TODO: for some reason `params.userId` returns a string starting with a colon (find out why?),
   // when id is grabbed as URL param from router in main.jsx (but why?) >> ACTUALLY: it is from PostList...
-  // NOTE: The REASON : error in link to Post in PostList component <Link to={}>
+  // NOTE: The REASON : error in link to Post in PostList component `Link`-s
   // !wrong link: <Link to={`/user/:${post.userId}`}> -- no colon is needed before the id variable when
   // passing from params with str literal
 
@@ -44,6 +44,7 @@ export const loader = async function ({ params }) {
   ).json();
 
   //NOTE: it would be nince if the module material mentioned the syntax for chacking if there is any posts/comments for specific user
+  // as a reminder from module 10 async/await exercises
   const posts = await (
     await fetch(`http://localhost:3003/posts?userId=${params.userId}`)
   ).json();
