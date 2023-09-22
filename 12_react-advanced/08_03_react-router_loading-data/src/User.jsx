@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 export const User = () => {
+  const { user, posts, comments } = useLoaderData();
+
   return (
     <div className="user">
       <h1>{user.name}</h1>
@@ -28,4 +30,27 @@ export const User = () => {
       )}
     </div>
   );
+};
+
+export const loader = async function ({ params }) {
+  // TODO: for some reason `params.userId` returns a string starting with a colon (find out why?),
+  // when id is grabbed as URL param from router in main.jsx (but why?) >> ACTUALLY: it is from PostList...
+  // NOTE: The REASON : error in link to Post in PostList component <Link to={}>
+  // !wrong link: <Link to={`/user/:${post.userId}`}> -- no colon is needed before the id variable when
+  // passing from params with str literal
+
+  const user = await (
+    await fetch(`http://localhost:3003/users/${params.userId}`)
+  ).json();
+
+  //NOTE: it would be nince if the module material mentioned the syntax for chacking if there is any posts/comments for specific user
+  const posts = await (
+    await fetch(`http://localhost:3003/posts?userId=${params.userId}`)
+  ).json();
+
+  const comments = await (
+    await fetch(`http://localhost:3003/comments?userId=${params.userId}`)
+  ).json();
+
+  return { user, posts, comments };
 };
