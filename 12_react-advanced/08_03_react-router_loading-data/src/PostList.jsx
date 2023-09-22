@@ -4,6 +4,7 @@ export const PostList = () => {
   const { users, posts } = useLoaderData();
   console.log(users, posts);
 
+  // NOTE: the nested div struct was the exercise requirement (semantic tags would be better IMHO)
   return (
     <div className="post-list">
       {posts.map((post) => (
@@ -13,9 +14,11 @@ export const PostList = () => {
           </Link>
           {users.map((user) =>
             user.id === post.userId ? (
-              <h3 key={user.id}>
-                <i>By {user.name}</i>
-              </h3>
+              <Link to={`/user/:${post.userId}`}>
+                <h3 key={user.id}>
+                  <i>By {user.name}</i>
+                </h3>
+              </Link>
             ) : null,
           )}
           <p>{post.body.slice(0, 20)}...</p>
