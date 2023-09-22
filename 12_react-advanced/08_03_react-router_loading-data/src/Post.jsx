@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 
 export const Post = () => {
+  const { post, users, comments } = useLoaderData();
+  console.log(post, users);
   return (
     <div className="post-detail">
       <h1>{post.title}</h1>
@@ -34,4 +36,15 @@ export const Post = () => {
       )}
     </div>
   );
+};
+
+export const loader = async function ({ params }) {
+  const postId = params.postId.slice(1);
+  const post = await (
+    await fetch(`http://localhost:3003/posts/${postId}`)
+  ).json();
+  const users = await (await fetch("http://localhost:3003/users")).json();
+  const comments = await (await fetch("http://localhost:3003/comments")).json();
+
+  return { post, users, comments };
 };
