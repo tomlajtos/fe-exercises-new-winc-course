@@ -1,4 +1,4 @@
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData, Link, Form, redirect } from "react-router-dom";
 
 export const Post = () => {
   const { post, users, comments } = useLoaderData();
@@ -13,6 +13,21 @@ export const Post = () => {
         </Link>
       </p>
       <p>{post.body}</p>
+      <hr />
+      <Form method={"post"}>
+        <h3>New comment</h3>
+        <textarea name="comment" />
+        <span>Select a user</span>
+        <select name="userId">
+          <option>Choose from the users in the list...</option>
+          {users.map((user) => (
+            <option key={user.id} value={user.id}>
+              {user.name}
+            </option>
+          ))}
+        </select>
+        <button type="submit">Comment</button>
+      </Form>
       <hr />
 
       {comments.length > 0 && (
@@ -58,4 +73,25 @@ export const loader = async function ({ params }) {
   ).json();
 
   return { post, users, comments };
+};
+
+export const addCommentAction = async function ({ request, params }) {
+  const formData = {
+    postId: params.postId,
+    ...Object.fromEntries(await request.formData()),
+  };
+  console.log("formData", formData);
+
+  let response = await fetch(`http://localhost:3003/comments`, {
+    method: "POST",
+    body: JSON.stringify(formData),
+    headers: {
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+  });
+
+  const data = await response.json();
+  console.log("comment data", data);
+  redirect(`/comments/${params.postId}`);
+  return null;
 };
