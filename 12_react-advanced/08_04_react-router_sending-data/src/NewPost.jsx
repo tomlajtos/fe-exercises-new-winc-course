@@ -1,10 +1,10 @@
 // NOTE: no form validation or authentication will be done to keep the focus on the basics
 
-import { useLoaderData, Form } from "react-router-dom";
+import { Form, useLoaderData, redirect } from "react-router-dom";
 
 export const NewPost = () => {
   const { users } = useLoaderData();
-  console.log(users);
+
   return (
     <>
       <Form method="post">
@@ -30,4 +30,25 @@ export const NewPost = () => {
 export const loader = async function () {
   const users = await (await fetch("http://localhost:3003/users")).json();
   return { users };
+};
+
+export const action = async function ({ request }) {
+  const formData = Object.fromEntries(await request.formData());
+  console.log("formData", formData);
+
+  let response = await fetch("http://localhost:3003/posts", {
+    method: "POST",
+    body: JSON.stringify(formData),
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+  });
+
+  const data = await response.json();
+
+  console.log("response", data);
+
+  redirect(`/post/${data.userId}`);
+
+  return data;
 };

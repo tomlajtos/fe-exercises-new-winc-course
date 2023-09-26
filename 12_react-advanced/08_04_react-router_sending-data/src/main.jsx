@@ -3,8 +3,12 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import { Root } from "./Root";
-import { NewPost, loader as newPostLoader } from "./NewPost";
 import { Post, loader as postLoader } from "./Post";
+import {
+  NewPost,
+  loader as newPostLoader,
+  action as newPostAction,
+} from "./NewPost";
 import { PostList, loader as postListLoader } from "./PostList";
 import { User, loader as userLoader } from "./User";
 
