@@ -32,11 +32,12 @@ export const loader = async function () {
   return { users };
 };
 
+// action to add new comments to a post
 export const action = async function ({ request }) {
   const formData = Object.fromEntries(await request.formData());
-  console.log("formData", formData);
+  // console.log("formData", formData);
 
-  let response = await fetch("http://localhost:3003/posts", {
+  const response = await fetch("http://localhost:3003/posts", {
     method: "POST",
     body: JSON.stringify(formData),
     headers: {
@@ -45,10 +46,13 @@ export const action = async function ({ request }) {
   });
 
   const data = await response.json();
-
-  console.log("response", data);
+  // console.log("response", data);
 
   redirect(`/post/${data.userId}`);
 
-  return data;
+  /**
+   * NOTE: without returning something from the action React throws an error
+   * do not recall that this was mentioned in the course material
+   */
+  return null;
 };
