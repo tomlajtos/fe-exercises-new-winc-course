@@ -2,7 +2,8 @@ import { useLoaderData, Link, Form, redirect } from "react-router-dom";
 
 export const Post = () => {
   const { post, users, comments } = useLoaderData();
-  console.log(post, users);
+  // console.log(post, users);
+
   return (
     <div className="post-detail">
       <h1>{post.title}</h1>
@@ -89,7 +90,7 @@ export const addCommentAction = async function ({ request, params }) {
 
   // console.log("formData", formData);
 
-  const response = await fetch(`http://localhost:3003/comments`, {
+  await fetch(`http://localhost:3003/comments`, {
     method: "POST",
     body: JSON.stringify(formData),
     headers: {
@@ -97,14 +98,15 @@ export const addCommentAction = async function ({ request, params }) {
     },
   });
 
-  const data = await response.json();
-  // console.log("comment data", data);
-
-  redirect(`/comments/${params.postId}`);
+  // redirect(`/comments/${params.postId}`);
+  // FIX: in Winc's solution the redirect is as below,
+  // my solution above seemd to work as well (may couse problems though, don't know),
+  // but it isn't linked to the <Post/> component...
+  return redirect(`/post/${params.postId}`);
 
   /**
    * NOTE: without returning something from the action React throws an error
    * do not recall that this was mentioned in the course material
    */
-  return null;
+  // return null;
 };
