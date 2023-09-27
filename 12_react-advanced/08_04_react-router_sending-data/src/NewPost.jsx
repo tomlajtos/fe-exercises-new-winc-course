@@ -3,7 +3,7 @@
 import { Form, useLoaderData, redirect } from "react-router-dom";
 
 export const NewPost = () => {
-  const { users } = useLoaderData();
+  const users = useLoaderData();
 
   return (
     <>
@@ -28,7 +28,7 @@ export const NewPost = () => {
 };
 
 export const loader = async function () {
-  return await (await fetch("http://localhost:3003/users")).json();
+  return await fetch("http://localhost:3003/users");
 };
 
 // action to add new comments to a post
