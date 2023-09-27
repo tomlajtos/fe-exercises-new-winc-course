@@ -45,9 +45,10 @@ export const action = async function ({ request }) {
   });
 
   const data = await response.json();
+  const newId = await data.id;
   // console.log("response", data);
 
-  redirect(`/post/${data.userId}`);
+  return redirect(`/post/${newId}`);
 
   /**
    * NOTE: without returning something from the action React throws an error
@@ -55,7 +56,7 @@ export const action = async function ({ request }) {
    * IT IS actually requested in the exercise instructions, but it is not discussed
    * in the concept explanation.
    */
-  return null;
+  // return null;
 };
 
 /**
