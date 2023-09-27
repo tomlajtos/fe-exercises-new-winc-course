@@ -9,9 +9,9 @@ export const NewPost = () => {
     <>
       <Form method="post">
         <span>Title:</span>
-        <input name="title"></input>
+        <input type="text" aria-label="Title" name="title"></input>
         <span>Post:</span>
-        <textarea name="body" />
+        <textarea name="body" aria-label="Body" rows={5} />
         <span>Select a user:</span>
         <select name="userId">
           <option value={""}>Choose a user from the list bleow...</option>
@@ -28,8 +28,7 @@ export const NewPost = () => {
 };
 
 export const loader = async function () {
-  const users = await (await fetch("http://localhost:3003/users")).json();
-  return { users };
+  return await (await fetch("http://localhost:3003/users")).json();
 };
 
 // action to add new comments to a post
@@ -53,6 +52,24 @@ export const action = async function ({ request }) {
   /**
    * NOTE: without returning something from the action React throws an error
    * do not recall that this was mentioned in the course material
+   * IT IS actually requested in the exercise instructions, but it is not discussed
+   * in the concept explanation.
    */
   return null;
 };
+
+/**
+ * Alternate way of writing the action using chained promisses (from solution posted at Winc's Github)
+ *
+ * export const action = async ({ request }) => {
+ * const formData = Object.fromEntries(await request.formData());
+ * const newId = await fetch("http://localhost:3000/posts", {
+ *   method: "POST",
+ *   body: JSON.stringify(formData),
+ *   headers: { "Content-Type": "application/json" },
+ * })
+ *   .then((res) => res.json())
+ *   .then((json) => json.id);
+ * return redirect(`/post/${newId}`);
+ *};
+ */
